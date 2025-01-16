@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none; /* Masquer le curseur par défaut */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #000;
+}
+
+#displayed-image {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+}
+
+/* Animation pour les images autour du curseur */
+.cursor-image {
+    position: absolute;
+    pointer-events: none;
+    animation: appear 1s forwards, disappear 1.5s forwards, move 3s linear forwards;
+}
+
+/* Animation pour l'apparition de l'image (agrandissement) */
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animation pour la disparition de l'image (rétrécissement) */
+@keyframes disappear {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* Animation pour le mouvement de l'image */
+@keyframes move {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(var(--move-x), var(--move-y));
+    }
+}
